@@ -1,7 +1,7 @@
 "use client";
 import {PrismaClient} from '@prisma/client'
-import { useEffect } from 'react';
 
+//import { useEffect } from 'react';
 import { AddData } from '@/app/mech/actions';
 const prisma = new PrismaClient
 type NameValues = {
