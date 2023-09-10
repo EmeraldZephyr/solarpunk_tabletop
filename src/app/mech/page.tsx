@@ -1,16 +1,14 @@
-"use client";
-//import {PrismaClient} from '@prisma/client'
+"use server";
+import {PrismaClient} from '@prisma/client'
 
-//import { useEffect } from 'react';
 import { AddData } from '@/app/mech/actions';
+import ClientComp from '@/app/mech/clientComp';
 const prisma = new PrismaClient
 type NameValues = {
     name:string|null;
 }|null
 export default async function Page(){
-    const addon = useEffect(()=>{
-        AddData("hello")
-    },[])
+
     const names:NameValues[] = await prisma.user.findMany({
         select: {
           name: true,
@@ -24,6 +22,7 @@ export default async function Page(){
     return(
         <div className="bg-black h-screen text-white">{names.map((name)=>{return <div key={name.name}>{name.name}</div>})}
         <button onClick={AddData}>click here</button>
+        <ClientComp/>
         </div>
         
         )
