@@ -9,3 +9,12 @@ email:`${addon}`
 },
 });
 }
+
+export async function getData(){
+const names = await prisma.user.findMany({
+select: {
+name: true,
+}
+})
+return names
+}
